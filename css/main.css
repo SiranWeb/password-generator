@@ -1,0 +1,10 @@
+html {
+    font-family: Arial, sans-serif;
+}
+
+#inputArea {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: flex-start;
+}
