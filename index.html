@@ -13,15 +13,15 @@
         <div id="inputArea">
             <div class="passLength-container">
                 <label for="passLengthRange">Password Length</label>
-                <input type="range" id="passLengthRange">
+                <input type="range" id="passLengthRange" min="3" max="25">
             </div>
 
             <label for="numbersCheckbox"><input type="checkbox" id="numbersCheckbox">Numbers</label>
             <label for="lettersCheckbox"><input type="checkbox" id="lettersCheckbox">Letters</label>
             <label for="differentCaseCheckbox"><input type="checkbox" id="differentCaseCheckbox">Different Case</label>
             <label for="specialSymbolsCheckbox"><input type="checkbox" id="specialSymbolsCheckbox">Special Symbols</label>
-            <label for="specialSymbolsList">List of special symbols</label>
-            <textarea id="specialSymbolsList" cols="30" rows="10"></textarea>
+            <label for="specialSymbolsTextarea">List of special symbols</label>
+            <textarea id="specialSymbolsTextarea" cols="30" rows="10"></textarea>
         </div>
     </div>
     <script src="./src/index.js"></script>
