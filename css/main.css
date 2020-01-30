@@ -5,6 +5,15 @@ html {
 #inputArea {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    align-items: flex-start;
+    width: 40%;
+}
+
+#passArea {
+    width: 60%;
+}
+
+#app {
+    display: flex;
     align-items: flex-start;
 }

@@ -12,14 +12,17 @@ getPasswordsBtn.addEventListener('click', getPasswords);
 numbersCheckbox.checked = true;
 lettersCheckbox.checked = true;
 differentCaseCheckbox.checked = false;
+specialSymbolsTextarea.checked = false;
+specialSymbolsTextarea.value = '@#!%$_';
 
-const amount = 10;
+const amount    = 1;
 const letters   = 'qwertyuiopasdfghjklzxcvbnm';
 const nums      = '1234567890';
 
 function generatePassword() {
     let password = '';
     let symbols = [];
+    let special = specialSymbolsTextarea.value;
     const symbolsAmount = passLengthRange.value;
 
     if (numbersCheckbox.checked) {
@@ -27,6 +30,9 @@ function generatePassword() {
     }
     if (lettersCheckbox.checked) {
         symbols.push(...letters.split(''));
+    }
+    if (specialSymbolsCheckbox.checked) {
+        symbols.push(...special.split(''));
     }
     
     for (let i = 0; i < symbolsAmount; i++) {

@@ -25,7 +25,12 @@
             <button id="getPasswords">Generate</button>
         </div>
         <div id="passArea">
+            <div class="passAmount-container">
+                <label for="passAmountRange">Password Amount</label>
+                <input type="range" id="passAmountRange" min="1" max="10">
+            </div>
             <div id="passOutput"></div>
+            
         </div>
     </div>
     <script src="./src/index.js"></script>
