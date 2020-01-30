@@ -1,14 +1,19 @@
-// elements
 const passLengthRange           = document.querySelector('#passLengthRange');
 const numbersCheckbox           = document.querySelector('#numbersCheckbox');
 const lettersCheckbox           = document.querySelector('#lettersCheckbox');
 const differentCaseCheckbox     = document.querySelector('#differentCaseCheckbox');
 const specialSymbolsCheckbox    = document.querySelector('#specialSymbolsCheckbox');
 const specialSymbolsTextarea    = document.querySelector('#specialSymbolsTextarea');
+const passOutput                = document.querySelector('#passOutput');
+const getPasswordsBtn           = document.querySelector('#getPasswords');
+
+getPasswordsBtn.addEventListener('click', getPasswords);
 
 numbersCheckbox.checked = true;
 lettersCheckbox.checked = true;
+differentCaseCheckbox.checked = false;
 
+const amount = 10;
 const letters   = 'qwertyuiopasdfghjklzxcvbnm';
 const nums      = '1234567890';
 
@@ -16,6 +21,7 @@ function generatePassword() {
     let password = '';
     let symbols = [];
     const symbolsAmount = passLengthRange.value;
+
     if (numbersCheckbox.checked) {
         symbols.push(...nums.split(''));
     }
@@ -23,13 +29,27 @@ function generatePassword() {
         symbols.push(...letters.split(''));
     }
     
-
     for (let i = 0; i < symbolsAmount; i++) {
-        const random = Math.floor(Math.random() * (symbols.length - 1));
-        password += symbols[random];
+        const randomElement = Math.floor(Math.random() * (symbols.length - 1));
+        const randomSymbol = symbols[randomElement];
+        if (differentCaseCheckbox.checked) {
+            passElem = Math.round(Math.random()) ? randomSymbol : randomSymbol.toUpperCase();
+        } else {
+            passElem = randomSymbol;
+        }
+        
+        password += passElem;
     }
     console.log(symbols);
     return password;
 };
 
-generatePassword();
+function getPasswords() {
+    passOutput.innerHTML = '';
+    for (let i = 0; i < amount; i++) {
+        const pass = document.createElement('p');
+        pass.classList.add('password');
+        pass.innerText = generatePassword();
+        passOutput.append(pass);
+    }
+};
