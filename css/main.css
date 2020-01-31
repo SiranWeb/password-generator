@@ -29,17 +29,18 @@ body {
 #app {
     display: flex;
     align-items: flex-start;
-    height: 40vh;
+    height: 350px;
 }
 
 #passwordOutput {
     border: #000 solid 2px;
-    min-height: 30vh;
-    max-height: 90vh;
+    min-height: 200px;
+    max-width: 600px;
+    overflow-x: auto;
 }
 
 #passwordOutput > p {
-    margin-left: 10px;
+    margin: 15px 10px;
 }
 
 .passwordAmount-container {
@@ -56,7 +57,6 @@ body {
 #getPasswords {
     padding: 10px 20px;
     border: #000 solid 1px;
-    outline: none;
     background-color: #f5f5f5;
 }
 
@@ -71,4 +71,8 @@ body {
 
 #specialSymbolsTextarea {
     resize: none;
+}
+
+#passwordLengthNumber, #passwordAmountNumber {
+    width: 30px;
 }

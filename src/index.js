@@ -7,13 +7,21 @@ const specialSymbolsTextarea    = document.querySelector('#specialSymbolsTextare
 const passwordOutput            = document.querySelector('#passwordOutput');
 const getPasswordsBtn           = document.querySelector('#getPasswords');
 const passwordAmountRange       = document.querySelector('#passwordAmountRange');
-getPasswordsBtn.addEventListener('click', getPasswords);
+const passwordLengthNumberInput = document.querySelector('#passwordLengthNumber');
+const passwordAmountNumberInput = document.querySelector('#passwordAmountNumber');
 
+getPasswordsBtn.addEventListener('click', getPasswords);
+passwordLengthRange.addEventListener('input', setPasswordLengthNumber);
+passwordLengthRange.addEventListener('change', setPasswordLengthNumber);
+passwordAmountRange.addEventListener('input', setPasswordAmountNumber);
+passwordAmountRange.addEventListener('change', setPasswordAmountNumber);
 numbersCheckbox.checked = true;
 lettersCheckbox.checked = true;
 differentCaseCheckbox.checked = false;
 specialSymbolsTextarea.checked = false;
 specialSymbolsTextarea.value = '@#!%$_';
+passwordLengthNumberInput.value = 12;
+passwordAmountNumberInput.value = 10;
 
 const lettersGroup          = 'qwertyuiopasdfghjklzxcvbnm';
 const numbersGroup          = '1234567890';
@@ -22,7 +30,7 @@ function generatePassword() {
     let password = '';
     let symbolsGroup = [];
     let specialGroup = specialSymbolsTextarea.value;
-    const symbolsAmount = passwordLengthRange.value;
+    const passwordLength = passwordLengthNumberInput.value;
 
     if (numbersCheckbox.checked) {
         symbolsGroup.push(...numbersGroup.split(''));
@@ -34,7 +42,7 @@ function generatePassword() {
         symbolsGroup.push(...specialGroup.split(''));
     }
     
-    for (let i = 0; i < symbolsAmount; i++) {
+    for (let i = 0; i < passwordLength; i++) {
         let passwordElement = null;
         const randomElementPosition = Math.floor(Math.random() * (symbolsGroup.length));
         const randomSymbol = symbolsGroup[randomElementPosition];
@@ -51,7 +59,7 @@ function generatePassword() {
 };
 
 function getPasswords() {
-    const passwordsAmount = passwordAmountRange.value;
+    const passwordsAmount = passwordAmountNumberInput.value;
     passwordOutput.innerHTML = '';
     for (let i = 0; i < passwordsAmount; i++) {
         const password = document.createElement('p');
@@ -59,4 +67,12 @@ function getPasswords() {
         password.innerText = generatePassword();
         passwordOutput.append(password);
     }
+};
+
+function setPasswordLengthNumber() {
+    passwordLengthNumberInput.value = passwordLengthRange.value;
+};
+
+function setPasswordAmountNumber() {
+    passwordAmountNumberInput.value = passwordAmountRange.value;
 };
