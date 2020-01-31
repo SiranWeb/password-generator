@@ -14,24 +14,27 @@
         <div id="inputArea">
             <div class="passLength-container">
                 <label for="passLengthRange">Password Length</label>
-                <input type="range" id="passLengthRange" min="3" max="25">
+                <input type="range" id="passwordLengthRange" min="3" max="25">
             </div>
-
-            <label for="numbersCheckbox"><input type="checkbox" id="numbersCheckbox">Numbers</label>
-            <label for="lettersCheckbox"><input type="checkbox" id="lettersCheckbox">Letters</label>
-            <label for="differentCaseCheckbox"><input type="checkbox" id="differentCaseCheckbox">Different Case</label>
-            <label for="specialSymbolsCheckbox"><input type="checkbox" id="specialSymbolsCheckbox">Special Symbols</label>
-            <label for="specialSymbolsTextarea">List of special symbols</label>
-            <textarea id="specialSymbolsTextarea" cols="30" rows="2"></textarea>
+            <div class="settings-container">
+                <label for="numbersCheckbox"><input type="checkbox" id="numbersCheckbox">Numbers</label>
+                <label for="lettersCheckbox"><input type="checkbox" id="lettersCheckbox">Letters</label>
+                <label for="differentCaseCheckbox"><input type="checkbox" id="differentCaseCheckbox">Different Case</label>
+                <label for="specialSymbolsCheckbox"><input type="checkbox" id="specialSymbolsCheckbox">Special Symbols</label>
+                <div class="specialSymbols-container">
+                    <label for="specialSymbolsTextarea">List of special symbols</label>
+                    <textarea id="specialSymbolsTextarea" cols="30" rows="3"></textarea>
+                </div>
+            </div>
+            
             <button id="getPasswords">Generate</button>
         </div>
-        <div id="passArea">
-            <div class="passAmount-container">
-                <label for="passAmountRange">Password Amount</label>
-                <input type="range" id="passAmountRange" min="1" max="10">
+        <div id="passwordArea">
+            <div class="passwordAmount-container">
+                <label for="passAmountRange">Passwords Amount</label>
+                <input type="range" id="passwordAmountRange" min="1" max="10">
             </div>
-            <div id="passOutput"></div>
-            
+            <div id="passwordOutput"></div> 
         </div>
     </div>
     <script src="./src/index.js"></script>
