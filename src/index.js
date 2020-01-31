@@ -15,47 +15,48 @@ differentCaseCheckbox.checked = false;
 specialSymbolsTextarea.checked = false;
 specialSymbolsTextarea.value = '@#!%$_';
 
-const amount    = 1;
-const letters   = 'qwertyuiopasdfghjklzxcvbnm';
-const nums      = '1234567890';
+const passwordsAmount       = 1;
+const lettersGroup          = 'qwertyuiopasdfghjklzxcvbnm';
+const numbersGroup          = '1234567890';
 
 function generatePassword() {
     let password = '';
-    let symbols = [];
-    let special = specialSymbolsTextarea.value;
+    let symbolsGroup = [];
+    let specialGroup = specialSymbolsTextarea.value;
     const symbolsAmount = passLengthRange.value;
 
     if (numbersCheckbox.checked) {
-        symbols.push(...nums.split(''));
+        symbolsGroup.push(...numbersGroup.split(''));
     }
     if (lettersCheckbox.checked) {
-        symbols.push(...letters.split(''));
+        symbolsGroup.push(...lettersGroup.split(''));
     }
     if (specialSymbolsCheckbox.checked) {
-        symbols.push(...special.split(''));
+        symbolsGroup.push(...specialGroup.split(''));
     }
     
     for (let i = 0; i < symbolsAmount; i++) {
-        const randomElement = Math.floor(Math.random() * (symbols.length - 1));
-        const randomSymbol = symbols[randomElement];
+        let passwordElement = null;
+        const randomElementPosition = Math.floor(Math.random() * (symbolsGroup.length - 1));
+        const randomSymbol = symbolsGroup[randomElementPosition];
         if (differentCaseCheckbox.checked) {
-            passElem = Math.round(Math.random()) ? randomSymbol : randomSymbol.toUpperCase();
+            passwordElement = Math.round(Math.random()) ? randomSymbol : randomSymbol.toUpperCase();
         } else {
-            passElem = randomSymbol;
+            passwordElement = randomSymbol;
         }
         
-        password += passElem;
+        password += passwordElement;
     }
-    console.log(symbols);
+    console.log(symbolsGroup);
     return password;
 };
 
 function getPasswords() {
     passOutput.innerHTML = '';
-    for (let i = 0; i < amount; i++) {
-        const pass = document.createElement('p');
-        pass.classList.add('password');
-        pass.innerText = generatePassword();
-        passOutput.append(pass);
+    for (let i = 0; i < passwordsAmount; i++) {
+        const password = document.createElement('p');
+        password.classList.add('password');
+        password.innerText = generatePassword();
+        passOutput.append(password);
     }
 };
